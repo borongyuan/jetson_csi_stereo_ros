@@ -1,0 +1,38 @@
+<launch>
+    <arg name="camera_name" default="camera" />
+    <arg name="sensor_mode" default="3" />
+    <arg name="framerate"   default="30" />
+    <arg name="flip_method" default="6" />
+    <arg name="width"       default="1280" />
+    <arg name="height"      default="720" />
+
+    <node pkg="nodelet" type="nodelet" name="$(arg camera_name)_nodelet_manager" args="manager" output="screen" />
+
+    <node pkg="nodelet" type="nodelet" name="$(arg camera_name)_left_nodelet" args="load gscam/GSCamNodelet $(arg camera_name)_nodelet_manager" output="screen">
+        <param name="camera_name" value="$(arg camera_name)" />
+        <param name="gscam_config" value="nvarguscamerasrc sensor-id=0 sensor-mode=$(arg sensor_mode) !
+            video/x-raw(memory:NVMM), format=(string)NV12, framerate=(fraction)$(arg framerate)/1 !
+            nvvidconv flip-method=$(arg flip_method) !
+            video/x-raw, width=(int)$(arg width), height=(int)$(arg height), format=(string)BGRx !
+            videoconvert !
+            video/x-raw, format=(string)BGR" />
+        <param name="frame_id" value="$(arg camera_name)_left_optical_frame" />
+        <param name="sync_sink" value="true" />
+        <remap from="/camera/image_raw" to="$(arg camera_name)/left/image_raw" />
+        <remap from="/set_camera_info" to="$(arg camera_name)/left/set_camera_info" />
+    </node>
+
+    <node pkg="nodelet" type="nodelet" name="$(arg camera_name)_right_nodelet" args="load gscam/GSCamNodelet $(arg camera_name)_nodelet_manager" output="screen">
+        <param name="camera_name" value="$(arg camera_name)" />
+        <param name="gscam_config" value="nvarguscamerasrc sensor-id=1 sensor-mode=$(arg sensor_mode) !
+            video/x-raw(memory:NVMM), format=(string)NV12, framerate=(fraction)$(arg framerate)/1 !
+            nvvidconv flip-method=$(arg flip_method) !
+            video/x-raw, width=(int)$(arg width), height=(int)$(arg height), format=(string)BGRx !
+            videoconvert !
+            video/x-raw, format=(string)BGR" />
+        <param name="frame_id" value="$(arg camera_name)_right_optical_frame" />
+        <param name="sync_sink" value="true" />
+        <remap from="/camera/image_raw" to="$(arg camera_name)/right/image_raw" />
+        <remap from="/set_camera_info" to="$(arg camera_name)/right/set_camera_info" />
+    </node>
+</launch>
