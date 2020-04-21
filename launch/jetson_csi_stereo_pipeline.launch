@@ -3,7 +3,8 @@
 
     <group ns="stereo">
         <node pkg="gpu_stereo_image_proc" type="vx_gpu_stereo_image_proc" name="vx_gpu_stereo_image_proc">
-            <param name="approximate_sync" value="true" />
+            <param name="approximate_sync"  value="true" />
+            <param name="shrink_scale"      value="4" />
         </node>
     </group>
 </launch>
