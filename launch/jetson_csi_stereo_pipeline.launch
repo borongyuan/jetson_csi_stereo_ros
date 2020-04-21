@@ -1,5 +1,7 @@
 <launch>
-    <include file="$(find jetson_csi_stereo_ros)/launch/jetson_csi_stereo.launch" />
+    <include file="$(find jetson_csi_stereo_ros)/launch/jetson_csi_stereo.launch">
+        <arg name="framerate"   default="15" />
+    </include>
 
     <group ns="stereo">
         <node pkg="gpu_stereo_image_proc" type="vx_gpu_stereo_image_proc" name="vx_gpu_stereo_image_proc">
