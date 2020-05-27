@@ -10,7 +10,7 @@
 
     <node pkg="nodelet" type="nodelet" name="$(arg camera_name)_left_nodelet" args="load gscam/GSCamNodelet $(arg camera_name)_nodelet_manager" output="screen">
         <param name="camera_name" value="$(arg camera_name)" />
-        <param name="camera_info_url" value="package://jetson_csi_stereo_ros/cfg/left.ini" />
+        <param name="camera_info_url" value="package://jetson_csi_stereo_ros/cfg/left.yaml" />
         <param name="gscam_config" value="nvarguscamerasrc sensor-id=0 sensor-mode=$(arg sensor_mode) !
             video/x-raw(memory:NVMM), format=(string)NV12, framerate=(fraction)$(arg framerate)/1 !
             nvvidconv flip-method=$(arg flip_method) !
@@ -25,7 +25,7 @@
 
     <node pkg="nodelet" type="nodelet" name="$(arg camera_name)_right_nodelet" args="load gscam/GSCamNodelet $(arg camera_name)_nodelet_manager" output="screen">
         <param name="camera_name" value="$(arg camera_name)" />
-        <param name="camera_info_url" value="package://jetson_csi_stereo_ros/cfg/right.ini" />
+        <param name="camera_info_url" value="package://jetson_csi_stereo_ros/cfg/right.yaml" />
         <param name="gscam_config" value="nvarguscamerasrc sensor-id=1 sensor-mode=$(arg sensor_mode) !
             video/x-raw(memory:NVMM), format=(string)NV12, framerate=(fraction)$(arg framerate)/1 !
             nvvidconv flip-method=$(arg flip_method) !
