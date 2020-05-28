@@ -32,7 +32,7 @@
             video/x-raw, width=(int)$(arg width), height=(int)$(arg height), format=(string)BGRx !
             videoconvert !
             video/x-raw, format=(string)BGR" />
-        <param name="frame_id" value="$(arg camera_name)_right_optical_frame" />
+        <param name="frame_id" value="$(arg camera_name)_left_optical_frame" />
         <param name="sync_sink" value="true" />
         <remap from="/camera/image_raw" to="$(arg camera_name)/right/image_raw" />
         <remap from="/set_camera_info" to="$(arg camera_name)/right/set_camera_info" />
