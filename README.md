@@ -32,3 +32,14 @@ $ git clone https://github.com/ros-drivers/gscam.git
 $ git clone https://github.com/ros-visualization/rqt_image_view.git
 $ catkin_make
 ```
+### Step 3 Install gpu_stereo_image_proc
+https://github.com/WHILL/gpu_stereo_image_proc
+
+Modify CMakeLists.txt before build
+
+Change line 24 to `find_package(OpenCV REQUIRED)`
+### Step 4 Clone This Repo
+```bash
+$ cd ~/catkin_ws/src
+$ git clone https://github.com/borongyuan/jetson_csi_stereo_ros.git
+```
