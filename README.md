@@ -43,3 +43,21 @@ Change line 24 to `find_package(OpenCV REQUIRED)`
 $ cd ~/catkin_ws/src
 $ git clone https://github.com/borongyuan/jetson_csi_stereo_ros.git
 ```
+### Step 5 Test Camera
+```bash
+$ roslaunch jetson_csi_stereo_ros jetson_csi_stereo.launch
+```
+For Jetson Xavier NX Dev Kit, if your left camera is CAM1 and right camera is CAM0, modify sensor-id in launch file.
+### Step 6 Stereo Camera Calibration
+http://wiki.ros.org/camera_calibration/Tutorials/StereoCalibration
+
+Then update cfg/left.yaml and cfg/right.yaml
+### Step 7 Stereo Image Processing using VisionWorks
+```bash
+$ roslaunch jetson_csi_stereo_ros jetson_csi_stereo_pipeline.launch
+```
+To view pointcloud in RVIZ, set Fixed Frame to `stereo_left_optical_frame`
+### Step 8 Tuning Parameters
+```bash
+$ rosrun rqt_reconfigure rqt_reconfigure
+```
