@@ -3,7 +3,10 @@ ROS Package for Jetson CSI Stereo Camera and GPU Accelerated Depth Processing
 
 Tested on JetPack 4.4 (OpenCV 4.1, VisionWorks 1.6)
 ## Tested Stereo Module
-![avatar](http://www.waveshare.net/w/upload/thumb/1/11/IMX219-83-Stereo-Camera-1.jpg/540px-IMX219-83-Stereo-Camera-1.jpg)
+
+<p align="center">
+  <img src="data/540px-IMX219-83-Stereo-Camera-1.jpg" />
+</p>
 
 Waveshare [IMX219-83 Stereo Camera](http://www.waveshare.net/wiki/IMX219-83_Stereo_Camera)
 ## Installation
